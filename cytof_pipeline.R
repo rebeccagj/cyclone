@@ -242,7 +242,9 @@ run_flowsom_optimization <- function(trans_exp_submarkers, clust_params, xdim, y
 #' @param xdim a single ydim value
 #' @param optimize_grid a boolean indicating whether the current function call is for optimizing the grid sizes. If TRUE, the DBI values are calculated for each grid size. The clustering labels are not saved. If FALSE, the cluster labels are saved for each grid size; the DBI is not calculated.
 run_flowsom <- function(my_flowframe, clust_params, xdim, ydim, optimize_grid) {
-
+  # Setting a seed for the FlowSOM clustering of each grid.
+  set.seed(seed)
+  
   cstart = Sys.time()
   print_message(paste0("FlowSOM clustering begins for grid: ", xdim, "x", ydim ))
   fSOM <- FlowSOM(my_flowframe,
